@@ -11,6 +11,7 @@ from twilio.rest import Client
 from config import twilio_sid, twilio_auth_token, sender_number, reciever_number
 
 
+min = 0
 while(True):
 
     opt = Options()
@@ -32,22 +33,23 @@ while(True):
 
     #time.sleep(100)
 
-
     if(boss_status == "starts in"):
-        print("sending msg")
-
-        client = Client(twilio_sid, twilio_auth_token)
-        message = client.messages.create(
-            body = "World boss spawning in " + boss_timer +  " (" + boss_name + ").",
-            from_ = sender_number,
-            to = reciever_number
-        )
-        print(message.body)
-        print(message.sid)
-
+        print("starts in " + boss_timer)
+        min = min + 1
+        if(min == 5):
+            print("sending msg ")
+            client = Client(twilio_sid, twilio_auth_token)
+            message = client.messages.create(
+                body = "World boss spawning in " + boss_timer +  " (" + boss_name + ").",
+                from_ = sender_number,
+                to = reciever_number
+            )
+            print(message.body)
+            print(message.sid)
+        min = 0
     else:
-        print("not sending (" + boss_status + ")")
-
+        print("not up " + boss_status)
+        min = 0
 
     print(datetime.now())
-    time.sleep(600)
+    time.sleep(60)
