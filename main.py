@@ -29,3 +29,17 @@ print(boss_name + '\n')
 #time.sleep(100)
 
 
+if(boss_status == "starts in"):
+    print("sending msg")
+
+    client = Client(twilio_sid, twilio_auth_token)
+    message = client.messages.create(
+    body = "World boss spawning in " + boss_timer +  " (" + boss_name + ").",
+    from_ = sender_number,
+    to = reciever_number
+    )
+    print(message.body)
+    print(message.sid)
+
+else:
+    print("not sending (" + boss_status + ")")
