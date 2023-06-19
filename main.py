@@ -17,19 +17,24 @@ while(True):
     opt = Options()
     opt.add_argument("--headless")
     driver = webdriver.Chrome(options=opt)
-    driver.get('https://diablo4.life/trackers/overview')
+    driver.get('https://d4armory.io/events/')
     driver.implicitly_wait(10)
 
-    driver.find_element("xpath", '//*[@class="fc-button fc-cta-consent fc-primary-button"]').click()
-    boss_status = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/div/div/span[1]').text
-    print(boss_status)
+   # driver.find_element("xpath", '//*[@class="fc-button fc-cta-consent fc-primary-button"]').click()
+   # boss_status = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/div/div/span[1]').text
+   # print(boss_status)
 
-    timer = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/div/div/span[2]').text
-    boss_timer = timer[0:2] + ':' + timer[5:7] + ':' + timer[10:12]
-    print(boss_timer)
+    #timer = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/div/div/span[2]').text
+   # boss_timer = timer[0:2] + ':' + timer[5:7] + ':' + timer[10:12]
+    #print(boss_timer)
 
-    boss_name = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/h3').text
-    print(boss_name + '\n')
+    #boss_name = driver.find_element("xpath", '/html/body/div[1]/main/div/div[6]/div[2]/div[4]/a[1]/div/div/div[1]/h3').text
+    #print(boss_name + '\n')
+
+    timer2 = driver.find_element("xpath", '//*[@id="bossSpawnTime"]').text
+    print(timer2)
+    name2 = driver.find_element("xpath", '//*[@id="bossName"]').text
+    print(name2)
 
     #time.sleep(100)
 
